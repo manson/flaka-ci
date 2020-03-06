@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/flakaal/flaka-ci/vendor"
+	"github.com/manson/flaka-ci/vendor"
 )
 
 func main() {

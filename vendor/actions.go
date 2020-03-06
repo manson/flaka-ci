@@ -50,6 +50,9 @@ func ParseCommands(commands interface{}) ([]string, error) {
 //ExecCommand runs command of the service specified in yml file
 func ExecCommand(watcher *Watcher, command string) error {
 	Mutex.Lock()
+	defer Mutex.Unlock()
+	watcher.composeNotification("RUN command *"+command+"* for service ", "success", "")
+	log.Printf("STARTED command '%s'\n", command)
 	commands := strings.Split(command, " ")
 	var cmd *exec.Cmd
 	if len(commands) > 1 {
@@ -71,6 +74,6 @@ func ExecCommand(watcher *Watcher, command string) error {
 		log.Println(stdout.String())
 		watcher.composeNotification("COMPLETED: Run command *"+strings.Join(commands, " ")+"* for service *", "success", "```Output:\n"+stdout.String()+"```")
 	}
-	Mutex.Unlock()
+	// Mutex.Unlock()
 	return nil
 }

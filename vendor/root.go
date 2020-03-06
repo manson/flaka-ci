@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/flakaal/flaka-ci/daemon"
+	"github.com/manson/flaka-ci/daemon"
 	"github.com/spf13/cobra"
 )
 

@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/flakaal/flaka-ci/daemon"
+	"github.com/manson/flaka-ci/daemon"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -51,6 +51,7 @@ func (c *ServerConfig) ReadConfig(file string) error {
 	if err := yaml.Unmarshal([]byte(data), &c); err != nil {
 		return err
 	}
+	// fmt.Printf("Services config read:&v", c.Services)
 	return nil
 }
 
